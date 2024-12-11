@@ -23,6 +23,6 @@ public class UserController {
 	public ResponseEntity<ResponseStructure<User>> saveUser(@RequestBody User user){
 		user = userService.saveUser(user);
 		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(ResponseStructure.create(HttpStatus.CREATED.value(),"User-Created" , user));
+				.body(ResponseStructure.create(HttpStatus.CREATED.value(),"User-Created", user));
 	}
 }
