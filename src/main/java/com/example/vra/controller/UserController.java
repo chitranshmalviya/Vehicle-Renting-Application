@@ -25,4 +25,7 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(ResponseStructure.create(HttpStatus.CREATED.value(),"User-Created", user));
 	}
+	
+
+	
 }
