@@ -22,12 +22,6 @@ public class User {
 	@OneToOne
 	private Image image;
 	
-	public Image getImage() {
-		return image;
-	}
-	public void setImage(Image image) {
-		this.image = image;
-	}
 	public UserRole getRole() {
 		return role;
 	}
