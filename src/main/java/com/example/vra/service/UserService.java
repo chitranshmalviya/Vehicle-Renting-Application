@@ -20,8 +20,8 @@ public class UserService {
 	} 
 
 	public UserResponse saveUser(UserRequest userRepositor) {
-		User user = userMapper.mapToUser(userRepositor);
+		User user = userMapper.mapToUserRequest(userRepositor);
 		User savedUser = userRepository.save(user);
-		return userMapper.mapTouserResponse(savedUser);
+		return userMapper.mapToUserResponse(savedUser);
 	}
 }

@@ -1,5 +1,4 @@
 package com.example.vra.mapper;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import com.example.vra.entity.User;
@@ -9,7 +8,7 @@ import com.example.vra.responsedto.UserResponse;
 @Component
 public class UserMapper {
 
-	public User mapToUser(UserRequest request) {
+	public User mapToUserRequest(UserRequest request) {
 		User user = new User();
 		user.setUsername(request.getUsername());
 		user.setEmail(request.getEmail());
@@ -19,7 +18,7 @@ public class UserMapper {
 		return user;
 	}
 
-	public UserResponse mapTouserResponse(User user) {
+	public UserResponse mapToUserResponse(User user) {
 		UserResponse response = new UserResponse();
 		response.setUserId(user.getUserId());
 		response.setUsername(user.getUsername());
