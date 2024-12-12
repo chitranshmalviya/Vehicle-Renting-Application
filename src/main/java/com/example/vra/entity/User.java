@@ -57,5 +57,12 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}	 
+	}
+	public Image getImage() {
+		return image;
+	}
+	public void setImage(Image image) {
+		this.image = image;
+	}
+	
 }
