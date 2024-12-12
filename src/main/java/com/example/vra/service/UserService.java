@@ -7,16 +7,17 @@ import com.example.vra.repository.UserRepository;
 
 @Service
 public class UserService {
-	
+
 	private final UserRepository userRepository;
 
 	public UserService(UserRepository userRepository) {
-		super();
 		this.userRepository = userRepository;
 	}
 
 	public User saveUser(User user) {
 		return userRepository.save(user);
 	}
-	
+
+
+
 }
