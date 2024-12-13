@@ -39,6 +39,4 @@ public class ImageController {
 				.contentType(MediaType.valueOf(image.getContentType()))
 				.body(image.getImageBytes());
 	}
-
-
 }

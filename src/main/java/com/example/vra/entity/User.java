@@ -21,7 +21,7 @@ public class User {
 	private UserRole role;
 	@OneToOne
 	private Image image;
-	
+
 	public UserRole getRole() {
 		return role;
 	}
@@ -64,5 +64,4 @@ public class User {
 	public void setImage(Image image) {
 		this.image = image;
 	}
-	
 }

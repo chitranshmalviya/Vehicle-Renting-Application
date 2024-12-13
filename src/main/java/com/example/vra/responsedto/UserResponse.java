@@ -8,6 +8,7 @@ public class UserResponse {
 	private String email;
 	private String phoneNumber;
 	private UserRole role;
+	private String profilePictureLink;
 	
 	public int getUserId() {
 		return userId;
@@ -39,6 +40,10 @@ public class UserResponse {
 	public void setRole(UserRole role) {
 		this.role = role;
 	}
-	
-
+	public String getProfilePictureLink() {
+		return profilePictureLink;
+	}
+	public void setProfilePictureLink(String profilePictureLink) {
+		this.profilePictureLink = profilePictureLink;
+	}
 }
