@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.vra.enums.UserRole;
 import com.example.vra.requestdto.UserRequest;
@@ -31,7 +32,7 @@ public class UserController {
 				.body(ResponseStructure.create(HttpStatus.CREATED.value(),"User-Created", response));
 	}
 	
-	@PostMapping("/renting-partner/register")
+	@PostMapping("/renting-partner/registration")
 	public ResponseEntity<ResponseStructure<UserResponse>> regiterRentingPartner(@RequestBody UserRequest userRequest){
 		UserResponse response = userService.register(userRequest, UserRole.RENTING_PARTNER);
 		return ResponseEntity.status(HttpStatus.CREATED)
@@ -45,11 +46,11 @@ public class UserController {
 				.body(ResponseStructure.create(HttpStatus.FOUND.value(),"User-Found ", response));
 	}
 	
-	@PutMapping("/update/details")
+	@PutMapping("/update/user-details")
 	public ResponseEntity<ResponseStructure<UserResponse>> updateCustomer(@RequestBody UserRequest userRequest, @RequestParam("userId") int userId){
-		UserResponse response = userService.updateUser(userRequest, userId);
-		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(ResponseStructure.create(HttpStatus.CREATED.value(),"User-Updated", response));
+		UserResponse response = userService.updateUser(userRequest, userId );
+		return ResponseEntity.status(HttpStatus.OK)
+				.body(ResponseStructure.create(HttpStatus.OK.value(),"User-Updated", response));
 	}
 
 

@@ -1,9 +1,10 @@
 package com.example.vra.service;
 
 import java.util.Optional;
-
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.example.vra.entity.Image;
 import com.example.vra.entity.User;
 import com.example.vra.enums.UserRole;
 import com.example.vra.exception.UserNotFoundByIdException;
@@ -35,14 +36,13 @@ public class UserService {
 		User user = userRepository.findById(userId)
 				.orElseThrow(()-> new UserNotFoundByIdException("User not found by given id"));
 		UserResponse response = userMapper.mapToUserResponse(user);
-		this.setProfilePictureURL(response, userId);
+		this.setProfilePictureURL(response, user.getImage());
 		return response;
 	}
 
-	private void setProfilePictureURL( UserResponse userResponse,int userId) {
-		int imageId=userRepository.findImageIdByUserId(userId);
-		if(imageId>0) {
-			userResponse.setProfilePictureLink("/find-image-by-id?imageId=" + imageId);
+	private void setProfilePictureURL( UserResponse userResponse, Image profilePicture) {
+		if(profilePicture!=null) {
+			userResponse.setProfilePictureLink("/find-image-by-id?imageId=" + profilePicture.getImageId());
 		}
 	}
 
@@ -53,7 +53,7 @@ public class UserService {
 			User updatedUser  = userMapper.mapToUser(userRequest, exUser);
 			User savedUser  = userRepository.save(updatedUser );
 			UserResponse response = userMapper.mapToUserResponse(savedUser);
-			this.setProfilePictureURL(response, userId);
+			this.setProfilePictureURL(response, exUser.getImage());
 			return response;
 		} else {
 			throw new UserNotFoundByIdException("User  not found by given id");

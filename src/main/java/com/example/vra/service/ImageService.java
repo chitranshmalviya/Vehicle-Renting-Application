@@ -29,12 +29,23 @@ public class ImageService {
 		Optional<User> optional = userRepository.findById(userId);
 		if (optional.isPresent()) {
 			User user = optional.get();
-			Image image = imageRepository.save(this.getImage(file));
-			user.setImage(image);
-			userRepository.save(user);
+			
+			if (user.getImage()!=null) {
+				Image image = user.getImage();
+				this.uploadProfilePhoto(file, user);
+				imageRepository.delete(image);
+			}
+			
+			this.uploadProfilePhoto(file, user);
 		} else {
 			throw new UserNotFoundByIdException("User Not Found By Given Id");
 		}
+	}
+	
+	public void uploadProfilePhoto(MultipartFile file, User user) {
+		Image image = imageRepository.save(this.getImage(file));
+		user.setImage(image);
+		userRepository.save(user);
 	}
 
 	public Image getImage(MultipartFile file) {

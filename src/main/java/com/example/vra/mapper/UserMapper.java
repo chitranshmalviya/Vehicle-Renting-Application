@@ -1,6 +1,6 @@
 package com.example.vra.mapper;
-import org.springframework.stereotype.Component;
 
+import org.springframework.stereotype.Component;
 import com.example.vra.entity.User;
 import com.example.vra.requestdto.UserRequest;
 import com.example.vra.responsedto.UserResponse;
@@ -10,7 +10,6 @@ public class UserMapper {
 
 	public User mapToUser (UserRequest request, User existingUser ) {
 		User user;
-
 		if (existingUser  != null) {
 			user = existingUser ;
 		} else {
