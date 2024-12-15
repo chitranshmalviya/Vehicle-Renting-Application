@@ -26,6 +26,12 @@ public class ApplicationExceptionHandler {
 	public ResponseEntity<ErrorStructure> handleImageNotFoundById(ImageNotFoundByIdException ex) {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND)
 				.body(ErrorStructure.create(HttpStatus.NOT_FOUND.value(),ex.getMessage(),
-						"Failed To Upload Image"));
+						"Failed To Find Image"));
+	}
+	@ExceptionHandler
+	public ResponseEntity<ErrorStructure> handleVehicleNotFoundById(VehicleNotFoundByIdException ex) {
+		return ResponseEntity.status(HttpStatus.NOT_FOUND)
+				.body(ErrorStructure.create(HttpStatus.NOT_FOUND.value(),ex.getMessage(),
+						"Failed To Find Vehicle By Give id"));
 	}
 }
