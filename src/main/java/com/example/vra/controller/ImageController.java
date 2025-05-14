@@ -28,7 +28,7 @@ public class ImageController {
 	(@RequestParam("userId") int userId, @RequestParam("file") MultipartFile file ){
 		imageService.addUserProfilePicture(userId, file);
 		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(SimpleResponseStructure.create(HttpStatus.CREATED.value(),"User-Created"));
+				.body(SimpleResponseStructure.create(HttpStatus.CREATED.value(),"User-Profile-Updated"));
 	}
 
 	@GetMapping("/find-image-by-id")
